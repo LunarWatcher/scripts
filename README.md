@@ -1,3 +1,3 @@
-# shell-scripts.sh
+# Scripts
 
-Various shell scripts for various purposes
+This is a meta repository containing mostly one-off scripts for Various Stuff:tm:. 
