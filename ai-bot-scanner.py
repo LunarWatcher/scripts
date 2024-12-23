@@ -44,7 +44,9 @@ while True:
 print()
 
 siteIdx = 0
+affectedSites = 0
 
+print("Site scan:")
 while siteIdx < len(sites):
     res = doRequest("users/-2", {"site": sites[siteIdx]})
     if res.status_code != 200:
@@ -53,6 +55,18 @@ while siteIdx < len(sites):
         continue
 
     if len(res.json()["items"]) == 1:
-        print(sites[siteIdx], "has a shitty misinformation bot")
+        print("\t", sites[siteIdx], "has a shitty misinformation bot")
+        affectedSites += 1
 
     siteIdx += 1
+
+print("Site scan done")
+print()
+
+print(
+    "{}/{} ({}%) sites have fallen".format(
+        affectedSites,
+        len(sites),
+        affectedSites / len(sites) * 100
+    )
+)
